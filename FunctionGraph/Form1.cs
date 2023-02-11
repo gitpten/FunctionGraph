@@ -45,6 +45,19 @@ namespace FunctionGraph
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            graphics.Clear(pGraph.BackColor);
+            graphics = pGraph.CreateGraphics();
+            CalcBasePoints();
+            Draw();
+        }
+
         private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
         {
             k = (double)nK.Value;
@@ -77,21 +90,17 @@ namespace FunctionGraph
             double dx = 1.0 / scale;
             for (double x = -maxX; x < maxX; x += dx)
             {
-                if (!odz(x))
+                if (!odz(x) || Math.Abs(f(x)) > maxY)
                 {
                     if(points.Count > 1) graphics.DrawCurve(new Pen(color, 2), points.ToArray());
                     points.Clear();
                     continue;
                 }
 
-                double y = f(x);
-
-                if (Math.Abs(y) > maxY) continue;
-
-                Point p = ConvertCoords(x, y);
+                Point p = ConvertCoords(x, f(x));
                 points.Add(p);                
             }
-            graphics.DrawCurve(new Pen(color, 2), points.ToArray());
+            if (points.Count > 1) graphics.DrawCurve(new Pen(color, 2), points.ToArray());
         }
 
         private Point ConvertCoords(double userX, double userY)
