@@ -30,6 +30,11 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pTools = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nB = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nK = new System.Windows.Forms.NumericUpDown();
+            this.chLinear = new System.Windows.Forms.CheckBox();
             this.chHyper = new System.Windows.Forms.CheckBox();
             this.chCube = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
@@ -37,6 +42,8 @@
             this.pGraph = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.pTools.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +65,11 @@
             // 
             // pTools
             // 
+            this.pTools.Controls.Add(this.label2);
+            this.pTools.Controls.Add(this.nB);
+            this.pTools.Controls.Add(this.label1);
+            this.pTools.Controls.Add(this.nK);
+            this.pTools.Controls.Add(this.chLinear);
             this.pTools.Controls.Add(this.chHyper);
             this.pTools.Controls.Add(this.chCube);
             this.pTools.Controls.Add(this.trackBar1);
@@ -67,13 +79,81 @@
             this.pTools.Name = "pTools";
             this.pTools.Size = new System.Drawing.Size(243, 686);
             this.pTools.TabIndex = 0;
+            this.pTools.Paint += new System.Windows.Forms.PaintEventHandler(this.pTools_Paint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 324);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "b";
+            // 
+            // nB
+            // 
+            this.nB.DecimalPlaces = 2;
+            this.nB.Location = new System.Drawing.Point(34, 347);
+            this.nB.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nB.Name = "nB";
+            this.nB.Size = new System.Drawing.Size(150, 27);
+            this.nB.TabIndex = 7;
+            this.nB.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 251);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "k";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // nK
+            // 
+            this.nK.DecimalPlaces = 2;
+            this.nK.Location = new System.Drawing.Point(34, 274);
+            this.nK.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nK.Name = "nK";
+            this.nK.Size = new System.Drawing.Size(150, 27);
+            this.nK.TabIndex = 5;
+            this.nK.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nK.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
+            // 
+            // chLinear
+            // 
+            this.chLinear.AutoSize = true;
+            this.chLinear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chLinear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.chLinear.Location = new System.Drawing.Point(51, 72);
+            this.chLinear.Name = "chLinear";
+            this.chLinear.Size = new System.Drawing.Size(102, 24);
+            this.chLinear.TabIndex = 4;
+            this.chLinear.Text = "y = kx + b";
+            this.chLinear.UseVisualStyleBackColor = true;
+            this.chLinear.CheckedChanged += new System.EventHandler(this.chHyper_CheckedChanged);
             // 
             // chHyper
             // 
             this.chHyper.AutoSize = true;
-            this.chHyper.Location = new System.Drawing.Point(58, 146);
+            this.chHyper.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chHyper.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.chHyper.Location = new System.Drawing.Point(51, 196);
             this.chHyper.Name = "chHyper";
-            this.chHyper.Size = new System.Drawing.Size(72, 24);
+            this.chHyper.Size = new System.Drawing.Size(76, 24);
             this.chHyper.TabIndex = 3;
             this.chHyper.Text = "y = Vx";
             this.chHyper.UseVisualStyleBackColor = true;
@@ -82,9 +162,11 @@
             // chCube
             // 
             this.chCube.AutoSize = true;
-            this.chCube.Location = new System.Drawing.Point(58, 107);
+            this.chCube.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chCube.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chCube.Location = new System.Drawing.Point(51, 157);
             this.chCube.Name = "chCube";
-            this.chCube.Size = new System.Drawing.Size(81, 24);
+            this.chCube.Size = new System.Drawing.Size(86, 24);
             this.chCube.TabIndex = 2;
             this.chCube.Text = "y = x^3";
             this.chCube.UseVisualStyleBackColor = true;
@@ -92,7 +174,7 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(31, 277);
+            this.trackBar1.Location = new System.Drawing.Point(34, 492);
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(130, 56);
@@ -103,9 +185,11 @@
             // chSquare
             // 
             this.chSquare.AutoSize = true;
-            this.chSquare.Location = new System.Drawing.Point(58, 61);
+            this.chSquare.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chSquare.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.chSquare.Location = new System.Drawing.Point(51, 111);
             this.chSquare.Name = "chSquare";
-            this.chSquare.Size = new System.Drawing.Size(81, 24);
+            this.chSquare.Size = new System.Drawing.Size(86, 24);
             this.chSquare.TabIndex = 0;
             this.chSquare.Text = "y = x^2";
             this.chSquare.UseVisualStyleBackColor = true;
@@ -131,6 +215,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pTools.ResumeLayout(false);
             this.pTools.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
@@ -145,5 +231,10 @@
         private CheckBox chSquare;
         private CheckBox chCube;
         private CheckBox chHyper;
+        private CheckBox chLinear;
+        private Label label1;
+        private NumericUpDown nK;
+        private Label label2;
+        private NumericUpDown nB;
     }
 }
